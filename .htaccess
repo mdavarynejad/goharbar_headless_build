@@ -47,9 +47,7 @@
 
 
     
-          ErrorDocument 401 /error_pages/401.html
           ErrorDocument 404 /404
-          ErrorDocument 500 /error_pages/500.html
         
         
 
@@ -237,7 +235,7 @@ AddDefaultCharset utf-8
 
 
     # (4)
-    RewriteBase /custom/
+    ### REWRITE-BASE ###
 
     # (5)
     # RewriteOptions <options>
@@ -348,15 +346,7 @@ AddDefaultCharset utf-8
 
     RewriteEngine On
 
-    RewriteRule ^not-existing-url/?$ /existing-url [R=301,L,NE]
-
-    RewriteCond %{HTTP_HOST} ^(www\.)?my-domain\.com [NC]
-    RewriteRule ^(.*)$ %{ENV:PROTO}://mydomain\.com/$1 [L,R=301,NC]
-        
-
-    RewriteCond %{HTTP_HOST} ^(www\.)?my-other-domain\.com [NC]
-    RewriteRule ^(.*)$ %{ENV:PROTO}://mydomain\.com/$1 [L,R=301,NC]
-        
+    ### CUSTOM-REWRITES ###
 
 </IfModule>
 
@@ -611,7 +601,4 @@ FileETag None
 # | Custom Rules                                                       |
 # ----------------------------------------------------------------------
 
-
-            # This is a custom rule!
-            # This is a another custom rule!
-        
+### CUSTOM-RULES ###
